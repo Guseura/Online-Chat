@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dialog_first_user_id: 1
+  dialog_second_user_id: 1
+
+two:
+  dialog_first_user_id: 1
+  dialog_second_user_id: 1

@@ -1,0 +1,20 @@
+
+<% if message.dialog_id == @current_dialog.id %>
+  <% if message.user_id != current_user.id %>
+    <% @user_to = User.find(message.user_id)  %>
+    <div class="message_from_info">
+      <div class="circle_new"><p><%= @user_to.username[0].upcase %></p></div>
+      <div class="message_from"><p>
+          <%= message.content %>
+        </p></div>
+    </div>
+  <% else %>
+    <div class="message_to_container">
+      <div class="message_to_info">
+        <div class="message_to"><p>
+          <%= message.content %>
+        </p></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

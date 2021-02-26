@@ -1,0 +1,39 @@
+
+<div class="left_side_block">
+  <div class="chat_list_box">
+    <% if @dialogs.present? %>
+      <% @dialogs.each do |dialog| %>
+        <% if(dialog.dialog_first_user_id == current_user.id) || (dialog.dialog_second_user_id == current_user.id) %>
+          <% if(dialog.dialog_first_user_id == current_user.id) %>
+            <% @user_to_show = User.find(dialog.dialog_second_user_id) %>
+          <% else %>
+            <% @user_to_show = User.find(dialog.dialog_first_user_id) %>
+          <% end %>
+            <% if @current_dialog.id != dialog.id %>
+              <a href="<%= dialog_path(dialog) %>" class="message_to_box">
+                <div class="container_message_to_box">
+                  <div class="circle"><p><%= @user_to_show.username[0].upcase %></p></div>
+                  <div class="message_to_box_container">
+                    <p class="name_surname_to"><%= @user_to_show.username %></p>
+                  </div>
+                </div>
+              </a>
+            <% else %>
+              <a href="<%= dialog_path(dialog) %>" class="chosen_message_to_box">
+                <div class="container_message_to_box">
+                  <div class="circle"><p><%= @user_to_show.username[0].upcase %></p></div>
+                  <div class="message_to_box_container">
+                    <p class="name_surname_to"><%= @user_to_show.username %></p>
+                  </div>
+                </div>
+              </a>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% else %>
+        <div class="text-muted">
+          There are no rooms
+        </div>
+    <% end %>
+  </div>
+</div>

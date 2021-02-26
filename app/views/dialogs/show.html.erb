@@ -1,0 +1,37 @@
+
+<%= render partial: 'left-block.html.erb' %>
+<div class="right_side_block" id="scroll_need">
+    <% if current_user.id == @current_dialog.dialog_second_user_id || current_user.id == @current_dialog.dialog_first_user_id %>
+			<div class="body_chat" id="chatbox">
+				<% @messages.each do |message| %>
+          <%= render'messages/message', message: message %>
+        <% end %>
+			</div>
+    <% else %>
+			<div class="body_chat_no">
+        <div class="fail">
+          <h3>The dialog exist, but you do not have access</h3>
+          <%= link_to "start page", controller: "dialogs", action: "index" %>
+        </div>
+			</div>
+    <% end %>
+</div>
+<div class="bottom_block">
+    <div class="bottom_block_right">
+      <%= simple_form_for @message, remote: true do |form| %>
+            <%= form.input :dialog_id, as: :hidden, value: @current_dialog.id %>
+            <%= form.input :user_id, as: :hidden, value: current_user.id %>
+            <%= form.input :content, as: :string,
+                                        wrapper: false,
+                                        label: false,
+                                        placeholder: 'Write a message...',
+                                        input_html: {
+                                        class: 'txta',
+                                        id: 'txta',
+                                        autocomplete: 'off'
+                                        } %>
+            <%= form.submit "Send", class: 'new_post_button' %>
+        <% end %>
+
+  	</div>
+  </div>

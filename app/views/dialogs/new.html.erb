@@ -1,0 +1,36 @@
+<%= render partial: 'left_block_not_in_room.html.erb' %>
+<div class="right_side_block_no">
+		<div class="body_chat_no">
+      <h3>Start conversation with</h3>
+      <div class="flex-dialogs-search-user">
+        <% @users.each do |user| %>
+
+					<% show = true %>
+					<% if user.id != current_user.id %>
+						<% @dialogs.each do |dialog| %>
+							<% if user.id == dialog.dialog_first_user_id && current_user.id == dialog.dialog_second_user_id || user.id == dialog.dialog_second_user_id && current_user.id == dialog.dialog_first_user_id %>
+								<% show = false %>
+							<% end %>
+						<% end %>
+						<% if show %>
+	            <div class="user-search">
+	              <div class="left-side-search">
+	                <div class="circle-search"><p><%= user.username[0].upcase %></p></div>
+	                <p class="name-surname-search"><%= user.username %></p>
+	              </div>
+	              <div class="right_side_search">
+	                <%= form_for :dialog, url: dialogs_path do |f| %>
+	                  <%= f.hidden_field :dialog_first_user_id, :value => current_user.id %>
+	                  <%= f.hidden_field :dialog_second_user_id, :value => user.id %>
+	                  <%= f.submit 'Start', :class => 'submit-new-dialog' %>
+	                <% end %>
+	              </div>
+	            </div>
+	            <div class="line-search"></div>
+						<%end%>
+          <% end %>
+
+				<% end %>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+@import "dialogs";
+@import "dialogs-new";
+@import "header";
+@import "left-side";
+@import "messages";
+@import "registration";
+
+body{
+  margin: 0px;
+  font-family: sans-serif;
+  background-color: #26282D;
+}
+a{
+  text-decoration: none;
+}
+.fail{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.fail a{
+  margin-top: 10px;
+  float: right;
+  background-color: #A0A4D9;
+  color: #eef;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 2.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+.fail a:hover{
+  cursor: pointer;
+  text-decoration: none;
+  color: #dde;
+  background-color: #8284bc;
+  border-color: #8284bc;
+}
+.fail h3{
+  color: #fff;
+  opacity: 0.8;
+}

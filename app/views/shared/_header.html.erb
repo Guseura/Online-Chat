@@ -1,0 +1,21 @@
+<% if current_user %>
+  <div class="top_block">
+    <div class="chat_list_box_top">
+      <p>Dropings</p>
+    </div>
+    <div class="right_side_top_info">
+        <div class="top_info_wrap">
+          <div class="containre_top_left_side">
+            <div class="top_right_circle"><p><%= current_user.username[0].upcase %></p></div>
+            <p class="right_name_surname"><%= current_user.username %></p>
+          </div>
+          <div>
+            <%= link_to new_dialog_path, class: "create_button" do %>
+              Find a user
+            <% end %>
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'log_out' %>
+          </div>
+        </div>
+      </div>
+  </div>
+<% end %>
